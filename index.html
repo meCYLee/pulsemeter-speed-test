@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="PulseMeter：即時量測你的下載、上傳、延遲與網路穩定度。" />
+    <title>PulseMeter — 即時網速檢測</title>
+    <link rel="preconnect" href="https://speed.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要內容</a>
+    <main id="main" class="app-shell">
+      <header class="masthead">
+        <a class="brand" href="/" aria-label="PulseMeter 首頁">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>PulseMeter</span>
+        </a>
+        <span class="privacy-note">僅在此裝置量測 · 不保存資料</span>
+      </header>
+
+      <section class="tester-card" aria-label="網速測試">
+        <div class="dial-column">
+          <div class="dial" id="speed-dial" aria-label="目前測得的網路速度">
+            <svg class="dial-svg" viewBox="0 0 260 260" aria-hidden="true">
+              <circle class="dial-track" cx="130" cy="130" r="107" />
+              <circle class="dial-progress" id="dial-progress" cx="130" cy="130" r="107" />
+            </svg>
+            <div class="dial-core">
+              <span class="dial-label" id="speed-label">準備就緒</span>
+              <strong id="speed-value">—</strong>
+              <span class="dial-unit" id="speed-unit">Mbps</span>
+            </div>
+          </div>
+          <p class="grade" id="connection-grade" aria-live="polite">按下按鈕開始量測</p>
+        </div>
+
+        <div class="control-column">
+          <p class="test-status" id="test-status" aria-live="polite">尚未開始測試</p>
+          <button class="start-button" id="start-test" type="button">
+            <span class="button-dot" aria-hidden="true"></span>
+            <span>開始測速</span>
+            <span class="button-arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="error-message" id="test-error" role="alert" hidden></p>
+          <p class="test-detail">測試會傳輸暫存資料以估算實際網速；結果可能受 Wi‑Fi、裝置與測試端點影響。</p>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="測速結果">
+        <article class="metric-card metric-download">
+          <div class="metric-topline"><span class="metric-orb" aria-hidden="true"></span><span>DOWNLOAD</span></div>
+          <p class="metric-value"><strong id="result-download">—</strong><span>Mbps</span></p>
+          <p class="metric-description">接收資料的速度</p>
+        </article>
+        <article class="metric-card metric-upload">
+          <div class="metric-topline"><span class="metric-orb" aria-hidden="true"></span><span>UPLOAD</span></div>
+          <p class="metric-value"><strong id="result-upload">—</strong><span>Mbps</span></p>
+          <p class="metric-description">送出資料的速度</p>
+        </article>
+        <article class="metric-card metric-ping">
+          <div class="metric-topline"><span class="metric-orb" aria-hidden="true"></span><span>RESPONSE</span></div>
+          <p class="metric-value"><strong id="result-ping">—</strong><span>ms</span></p>
+          <p class="metric-description">Ping <span class="divider">·</span> Jitter <span id="result-jitter">—</span> ms</p>
+        </article>
+      </section>
+    </main>
+    <footer><span>PulseMeter</span><span>即時網速檢測工具</span></footer>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
